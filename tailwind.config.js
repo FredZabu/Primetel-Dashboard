@@ -57,6 +57,9 @@ module.exports = {
         green: "#0B8A00",
         orange: "#FF7E07",
         navbg: "rgba(16, 13, 177, 0.1)",
+        upcoming: "rgba(47, 229, 167, 0.3)",
+        past: "rgba(255, 126, 7, 0.3)",
+        missed: "rgba(201, 43, 39, 0.3)",
         // light mode
         tremor: {
           brand: {
