@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { RxCross1 } from "react-icons/rx";
-
+import { GiMedicines } from "react-icons/gi";
+import { FaEdit, FaEye } from "react-icons/fa";
 function PatientView({ openView, setOpenView, data, funct }) {
   const meetings = [{
     date: "20/01/2024",
@@ -124,13 +125,32 @@ function PatientView({ openView, setOpenView, data, funct }) {
             <p className="text-textDark font-semibold">Prescription</p>
             <p className="text-primary font-semibold cursor-pointer">Add Prescription</p>
           </div>
+          <div className="mt-4 w-[60%] flex items-center justify-between ">
+            <span className="flex items-center space-x-4"><GiMedicines size={18} color="#c92b27" /> <span>Amoxicillin 500mg one tablet three times...</span>  </span>
+            <FaEye size={18} color="#0B8A00" className="cursor-pointer" />
+          </div>
+          <div className="mt-4 w-[60%] flex items-center justify-between ">
+            <span className="flex items-center space-x-4"><GiMedicines size={18} color="#c92b27" /> <span> Amlodipine 5mg, take one tablet daily...</span>  </span>
+            <FaEye size={18} color="#0B8A00" className="cursor-pointer" />
+          </div>          
         </div>
 
         {/* Laboratory Test section */}
         <hr className='mt-5 bg-slate-500' />
         
         <div className=' w-[95%] mt-4 mx-auto '>
-
+            <div className="flex justify-between">
+            <p className="text-textDark font-semibold">Laboratory Tests</p>
+            <p className="text-primary font-semibold cursor-pointer">Add Test</p>
+          </div>
+          <div className="mt-4 w-[60%] flex items-center justify-between ">
+            <span className="flex items-center space-x-4"><GiMedicines size={18} color="#c92b27" /> <span>Amoxicillin 500mg one tablet three times...</span>  </span>
+            <FaEye size={18} color="#0B8A00" className="cursor-pointer" />
+          </div>
+          <div className="mt-4 w-[60%] flex items-center justify-between ">
+            <span className="flex items-center space-x-4"><GiMedicines size={18} color="#c92b27" /> <span> Amlodipine 5mg, take one tablet daily...</span>  </span>
+            <FaEye size={18} color="#0B8A00" className="cursor-pointer" />
+          </div>  
         </div>     
         
         {/* Available Test section */}
