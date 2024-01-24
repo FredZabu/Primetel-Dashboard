@@ -2,6 +2,9 @@
 import { RxCross1 } from "react-icons/rx";
 import { GiMedicines } from "react-icons/gi";
 import { FaEdit, FaEye } from "react-icons/fa";
+import { ImLab } from "react-icons/im";
+import { IoMdDownload } from "react-icons/io";
+import { FaFile } from "react-icons/fa6";
 function PatientView({ openView, setOpenView, data, funct }) {
   const meetings = [{
     date: "20/01/2024",
@@ -47,22 +50,22 @@ function PatientView({ openView, setOpenView, data, funct }) {
 
         <div className=' w-[95%] mt-4 mx-auto '>
           <div className="">
-            <p className="text-lg font-semibold text-textDark">Name</p>
-            <p className="bg-white px-4 py-2">Asiimwe Fred</p>
+            <p className=" font-semibold text-textDark">Name</p>
+            <p className="bg-white text-[#52575C] px-4 py-2">Asiimwe Fred</p>
           </div> 
           <div className="flex justify-between space-x-5 mt-3">
             <div className="flex-1">
-            <p className="text-lg font-semibold text-textDark">Phone Number</p>
-            <p className="bg-white px-4 py-2">+256781936669</p>
+            <p className=" font-semibold text-textDark">Phone Number</p>
+            <p className="bg-white text-[#52575C] px-4 py-2">+256781936669</p>
             </div> 
             <div className=" flex-1">
-            <p className="text-lg font-semibold text-textDark">Gender</p>
-            <p className="bg-white px-4 py-2">Male</p>
+            <p className=" font-semibold text-textDark">Gender</p>
+            <p className="bg-white text-[#52575C] px-4 py-2">Male</p>
             </div>           
           </div>
           <div className="mt-3">
-            <p className="text-lg font-semibold text-textDark">Email</p>
-            <p className="bg-white px-4 py-2">fredasiimwe133@gmail.com</p>
+            <p className=" font-semibold text-textDark">Email</p>
+            <p className="bg-white text-[#52575C] px-4 py-2">fredasiimwe133@gmail.com</p>
           </div>    
 
         </div>   
@@ -71,7 +74,7 @@ function PatientView({ openView, setOpenView, data, funct }) {
 
         <div className=' w-[95%] mt-4 mx-auto '>
           <div className="flex items-center space-x-4">
-            <p className="text-textDark">Upcoming and Past Meetings</p>  
+            <p className="text-textDark font-semibold">Upcoming and Past Meetings</p>  
             <div className="space-x-2">
               <div className="px-2 py-[2px] space-x-2 inline-flex items-center bg-upcoming rounded-full">
               <span className="w-2 h-2 rounded-full bg-[#2FE5A7] inline-block"> </span>
@@ -112,8 +115,8 @@ function PatientView({ openView, setOpenView, data, funct }) {
           </div>  
           
           <div className="mt-5">
-            <p>Condition/Notes</p>
-          <p className="px-5 py-2 bg-white "> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore quo nihil ipsam, voluptates repellat ab perspiciatis nemo doloribus numquam ex, eaque modi. Quae, quo error? Similique iure voluptatum illo amet. </p>            
+            <p className="text-textDark font-semibold">Condition/Notes</p>
+          <p className="px-5 text-[#52575C] py-2 bg-white  font-semibold"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore quo nihil ipsam, voluptates repellat ab perspiciatis nemo doloribus numquam ex, eaque modi. Quae, quo error? Similique iure voluptatum illo amet. </p>            
           </div>
         </div>
 
@@ -144,11 +147,11 @@ function PatientView({ openView, setOpenView, data, funct }) {
             <p className="text-primary font-semibold cursor-pointer">Add Test</p>
           </div>
           <div className="mt-4 w-[60%] flex items-center justify-between ">
-            <span className="flex items-center space-x-4"><GiMedicines size={18} color="#c92b27" /> <span>Amoxicillin 500mg one tablet three times...</span>  </span>
+            <span className="flex items-center space-x-4"><ImLab size={18} color="#c92b27" /> <span>Jomo Labs -Liver Function Tests</span>  </span>
             <FaEye size={18} color="#0B8A00" className="cursor-pointer" />
           </div>
           <div className="mt-4 w-[60%] flex items-center justify-between ">
-            <span className="flex items-center space-x-4"><GiMedicines size={18} color="#c92b27" /> <span> Amlodipine 5mg, take one tablet daily...</span>  </span>
+            <span className="flex items-center space-x-4"><ImLab size={18} color="#c92b27" /> <span> Pfizer Labs - Urinalysis</span>  </span>
             <FaEye size={18} color="#0B8A00" className="cursor-pointer" />
           </div>  
         </div>     
@@ -156,8 +159,19 @@ function PatientView({ openView, setOpenView, data, funct }) {
         {/* Available Test section */}
         <hr className='mt-5 bg-slate-500' />
         
-        <div className=' w-[95%] mt-4 mx-auto '>
-
+        <div className=' w-[95%] mt-4 mx-auto mb-5'>
+            <div className="">
+            <p className="text-textDark font-semibold">Available Laboratory Tests Results</p>
+            
+          </div>
+          <div className="mt-4 w-[60%] flex items-center justify-between ">
+            <span className="flex items-center space-x-4"><FaFile size={18} color="#c92b27" /> <span>Lancet Labs - CBC</span>  </span>
+            <IoMdDownload size={18} color="#0B8A00" className="cursor-pointer" />
+          </div>
+          <div className="mt-4 w-[60%] flex items-center justify-between ">
+            <span className="flex items-center space-x-4"><FaFile size={18} color="#c92b27" /> <span> Lancet Labs - CBC</span>  </span>
+            <IoMdDownload size={18} color="#0B8A00" className="cursor-pointer" />
+          </div> 
         </div>        
       </div>
     </div>
