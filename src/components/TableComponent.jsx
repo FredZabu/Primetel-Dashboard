@@ -122,7 +122,7 @@ const TableComponent = ({ tableHeaders, tableData, status, actions, funct }) => 
       </Table>
 
       <PaginationButton className="my-5" />
-      {openModal ? <EditModal openModal={openModal} setOpenModal={setOpenModal} funct='Patient' data={dataNeeded} /> : ''}
+      {openModal ? <EditModal openModal={openModal} setOpenModal={setOpenModal} funct={funct} data={dataNeeded} /> : ''}
       { openView? <ViewModal openView = {openView} setOpenView={setOpenView} funct = {funct} data = {dataNeeded} /> : ''}
     </>
   );
