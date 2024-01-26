@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 
 function AppointmentEditModal(props) {
   const { openModal, setOpenModal, funct, data } = props;
+  const [editedData, setEditedData] = useState({ date: "", time: "" });
+  const { Name, MeetingDate, MeetingTime, PhoneNumber, Status } = data;
   console.log(data);
   return (
   <div className='grid place-items-center h-[100vh] top-0 left-0 right-0 z-[999] bg-[rgba(0,0,0,0.2)] absolute'>
@@ -23,7 +26,7 @@ function AppointmentEditModal(props) {
         <div className=' w-[95%] mt-4 mx-auto '>
           <div className="">
             <p className=" font-semibold text-textDark">Patient</p>
-            <p className="bg-white text-[#52575C] px-4 py-2">Asiimwe Fred</p>
+            <p className="bg-white text-[#52575C] px-4 py-2">{Name}</p>
           </div> 
 
           <form action="">
@@ -31,19 +34,19 @@ function AppointmentEditModal(props) {
               <div className="flex-1">
               <p className=" font-semibold text-textDark">Date</p>
                 
-                <input type="text" value="23/05/2024" name="" id="" className="bg-white text-[#52575C] px-4 py-2 customInput" />
+                <input type="text" value={MeetingDate} name="" id="" className="bg-white text-[#52575C] px-4 py-2 customInput" />
               </div> 
 
               <div className=" flex-1">
               <p className=" font-semibold text-textDark">Time</p>
                 
-              <input type="text" value="12:00 - 12:30 pm" name="" id="" className="bg-white text-[#52575C] px-4 py-2 customInput " />            
+              <input type="text" value={MeetingTime} name="" id="" className="bg-white text-[#52575C] px-4 py-2 customInput " />            
               </div>           
             </div>          
           </form>
           <div className="mt-3">
             <p className=" font-semibold text-textDark">Status</p>
-            <p className="bg-white text-[#52575C] px-4 py-2">Upcoming</p>
+            <p className="bg-white text-[#52575C] px-4 py-2">{Status}</p>
           </div>    
           <div className="mt-5">
             <p className="text-textDark font-semibold">Notes</p>

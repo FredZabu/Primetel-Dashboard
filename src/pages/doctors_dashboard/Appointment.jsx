@@ -13,57 +13,56 @@ export default function Appointment() {
       "MeetingTime",
       "PhoneNumber",
     ];
-    const [tableData, setTableData]  = useState([
-      {
-        Name: "Leslie Alexander",
-        Email: "lesie.alexander@example.com",
-        MeetingDate: "10/10/2020",
-        MeetingTime: "09:15-09:45am",
-        PhoneNumber: "0787953142",
-        Status: "Upcoming",
-      },
-      {
-        Name: "Ronald Richards",
-        Email: "ronald.richards@example.com",
-        MeetingDate: "10/10/2020",
-        MeetingTime: "12:00-12:45pm",
-        PhoneNumber: "0787953142",
-        Status: "Missed",
-      },
-      {
-        Name: "Jane Cooper",
-        Email: "jane.cooper@example.com",
-        MeetingDate: "10/13/2020",
-        MeetingTime: "01:15-01:45pm",
-        PhoneNumber: "0787953142",
-        Status: "Past",
-      },
-      {
-        Name: "Robert Fox",
-        Email: "robert.fox@gmail.com",
-        MeetingDate: "10/14/2020",
-        MeetingTime: "02:00-02:4pm",
-        PhoneNumber: "0787953142",
-        Status: "Missed",
-      },
-      {
-        Name: "Leslie Alexander",
-        Email: "lesie.alexander@example.com",
-        MeetingDate: "10/10/2020",
-        MeetingTime: "09:15-09:45am",
-        PhoneNumber: "0787953142",
-        Status: "Upcoming",
-      },
-      {
-        Name: "Ronald Richards",
-        Email: "ronald.richards@example.com",
-        MeetingDate: "10/10/2020",
-        MeetingTime: "12:00-12:45pm",
-        PhoneNumber: "0787953142",
-        Status: "Missed",
-      },
-      
-    ]);
+  const [tableData, setTableData] = useState([
+    {
+      Name: "Leslie Alexander",
+      Email: "lesie.alexander@example.com",
+      MeetingDate: "10/10/2020",
+      MeetingTime: "09:15-09:45am",
+      PhoneNumber: "0787953142",
+      Status: "Upcoming",
+    },
+    {
+      Name: "Ronald Richards",
+      Email: "ronald.richards@example.com",
+      MeetingDate: "10/10/2020",
+      MeetingTime: "12:00-12:45pm",
+      PhoneNumber: "0787953142",
+      Status: "Missed",
+    },
+    {
+      Name: "Jane Cooper",
+      Email: "jane.cooper@example.com",
+      MeetingDate: "10/13/2020",
+      MeetingTime: "01:15-01:45pm",
+      PhoneNumber: "0787953142",
+      Status: "Past",
+    },
+    {
+      Name: "Robert Fox",
+      Email: "robert.fox@gmail.com",
+      MeetingDate: "10/14/2020",
+      MeetingTime: "02:00-02:4pm",
+      PhoneNumber: "0787953142",
+      Status: "Missed",
+    },
+    {
+      Name: "Leslie Alexander",
+      Email: "lesie.alexander@example.com",
+      MeetingDate: "10/10/2020",
+      MeetingTime: "09:15-09:45am",
+      PhoneNumber: "0787953142",
+      Status: "Upcoming",
+    },
+    {
+      Name: "Ronald Richards",
+      Email: "ronald.richards@example.com",
+      MeetingDate: "10/10/2020",
+      MeetingTime: "12:00-12:45pm",
+      PhoneNumber: "0787953142",
+      Status: "Missed",
+    },
+  ]);
   return (
     <Layout>
       <div className="flex flex-col w-full">
