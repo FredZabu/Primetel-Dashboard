@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { AppointmentView, PrescriptionView, PatientView} from "./index.js"
+import { AppointmentView, PrescriptionView, PatientView, OrderView} from "./index.js"
 function ViewModal({ openView, setOpenView, data, funct }) {
     console.log("This the Patient ==>" + funct);
     if (funct === "Patient") {
@@ -9,7 +9,10 @@ function ViewModal({ openView, setOpenView, data, funct }) {
         return <AppointmentView openView={openView} setOpenView={setOpenView} data={data} funct={funct} />
     } else if (funct === "Prescription") {
         return <PrescriptionView openView={openView} setOpenView={setOpenView} data={data} funct={funct} />
-    } else {
+    } else if (funct === "orders") {
+        return <OrderView openView={openView} setOpenView={setOpenView} data={data} funct={funct} />
+    }
+    else {
         return ""
     }
   

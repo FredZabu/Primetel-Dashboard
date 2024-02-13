@@ -15,7 +15,7 @@ const OrderTable = ({ tableHeaders, tableData, status, actions, funct }) => {
 
   const [dataNeeded, setDataNeeded] = useState({})
 
-  const [openModal, setOpenModal] = useState(false)
+  // const [openModal, setOpenModal] = useState(false)
 
   const [openView, setOpenView] = useState(false);
 
@@ -81,7 +81,7 @@ const OrderTable = ({ tableHeaders, tableData, status, actions, funct }) => {
                         >
                           <FaEye size={18} />
                         </a>
-                        <a
+                        {/* <a
                           className="font-medium text-orange hover:underline hover:scale-110 duration-150 cursor-pointer"
                          onClick={() => {
                             setOpenModal(true);
@@ -90,7 +90,7 @@ const OrderTable = ({ tableHeaders, tableData, status, actions, funct }) => {
                           }}
                         >
                           <FaEdit size={18}/>
-                        </a>
+                        </a> */}
                         <a
                           className="font-medium text-primary hover:underline hover:scale-110 duration-150 cursor-pointer"
                           
@@ -123,7 +123,7 @@ const OrderTable = ({ tableHeaders, tableData, status, actions, funct }) => {
       </Table>
 
       <PaginationButton className="my-5" />
-      {openModal ? <EditModal openModal={openModal} setOpenModal={setOpenModal} funct={funct} data={dataNeeded} /> : ''}
+
       { openView? <ViewModal openView = {openView} setOpenView={setOpenView} funct = {funct} data = {dataNeeded} /> : ''}
     </>
   );
