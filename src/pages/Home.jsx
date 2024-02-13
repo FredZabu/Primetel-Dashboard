@@ -1,9 +1,9 @@
 //import react from 'react';
-import { DoughNutChart } from "../../components/DoughnutChart";
-import { BarGraph } from "../../components/BarGraph";
-import Table from "../../components/Table";
-import NavbarWithNotification from "../../components/Navbar";
-import StatsCard from "../../components/StatsCard";
+import { DoughNutChart } from "../components/DoughnutChart";
+import { BarGraph } from "../components/BarGraph";
+import Table from "../components/Table";
+import NavbarWithNotification from "../components/Navbar";
+import StatsCard from "../components/StatsCard";
 import Layout from "./Layout";
 import { FaUsers, FaFilePrescription, FaStar } from "react-icons/fa";
 import { BsFillCalendar3WeekFill } from "react-icons/bs";

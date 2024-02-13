@@ -1,7 +1,7 @@
 import  {useState} from 'react';
 import NavbarWithNotification from "../../components/Navbar";
 import MiniNavBar from "../../components/MiniNavBar";
-import Layout from "./Layout";
+import Layout from "../Layout";
 import TableComponent from "../../components/TableComponent";
 import MiniNavBar2 from '../../components/MiniNavBar2';
 

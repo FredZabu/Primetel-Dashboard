@@ -37,7 +37,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const handleLogin = () => {
-    navigate("/home")
+    navigate("/dashboard")
   }
   return (
     <Layout>

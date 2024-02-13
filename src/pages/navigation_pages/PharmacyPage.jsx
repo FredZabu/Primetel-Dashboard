@@ -1,6 +1,6 @@
 import React from 'react'
  import { Link } from "react-router-dom";
- import Layout from '../doctors_dashboard/Layout'
+ import Layout from '../Layout'
 import NavbarWithNotification from '../../components/Navbar'
 import {BsArrowLeftShort,} from "react-icons/bs";
 import { MdEmail } from "react-icons/md";

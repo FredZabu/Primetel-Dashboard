@@ -1,7 +1,7 @@
 
 import NavbarWithNotification from "../../components/Navbar";
 import PharmacyCard from "../../components/PharmacyCard"; // Import your PharmacyCard component
-import Layout from "./Layout";
+import Layout from "../Layout";
 import { FaMedkit, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom"; // Assuming you're using React Router
 import LaboratoryCard from "../../components/LaboratoryCard";

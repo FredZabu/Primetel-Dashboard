@@ -1,5 +1,5 @@
 //import react from 'react';
-import Layout from "./Layout";
+import Layout from "../Layout";
 import ProfileSettings from "../../components/ProfileSettings";
 
 export default function Profile() {
