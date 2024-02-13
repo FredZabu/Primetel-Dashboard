@@ -16,7 +16,7 @@ import InputInfoComponent from "../components/InputInfoComponent";
 import { toast } from "react-hot-toast";
 
 
-function PrescriptionModal(props) {
+function PrescriptionEditModal(props) {
     const { setOpenModal } = props;
 
     const pharmacies = ["ABC Pharmacy", "XYZ Pharmacy", "horebu Pharmacy"]

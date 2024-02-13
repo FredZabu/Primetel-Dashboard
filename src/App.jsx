@@ -6,9 +6,9 @@ import {Appointment, Drugs, ForgotPassword, Home, Laboratory, LaboratoryOrders, 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Routes>
-          {/* Authentication Routes */}
+          
           <Route path="/" element={<Login />} />
           <Route path="/signup2" element={<SignUp2 />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
