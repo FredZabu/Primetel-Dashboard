@@ -55,6 +55,7 @@ module.exports = {
         textDisable: "#DDDDE8",
         extraLight: "#F0F3F9",
         green: "#0B8A00",
+        category: "rgba(16, 13, 177, 0.15)",
         orange: "#FF7E07",
         navbg: "rgba(16, 13, 177, 0.1)",
         upcoming: "rgba(47, 229, 167, 0.3)",

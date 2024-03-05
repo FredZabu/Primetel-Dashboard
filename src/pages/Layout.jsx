@@ -57,10 +57,10 @@ const Layout = ({ children }) => {
     },
   ];
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen  overflow-hidden">
       <Sidebar menuItems={doctorsMenuItems} />
 
-      <div className="mt-1 overflow-y-auto w-full bg-extraLight/40">
+      <div className="mt-1 no-scrollbar overflow-y-auto w-full bg-extraLight/40">
         {children}
       </div>
     </div>
