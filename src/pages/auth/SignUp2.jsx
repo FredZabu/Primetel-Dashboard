@@ -224,7 +224,7 @@ const SignUp2 = () => {
           <ButtonLong type="submit" text="Sign Up" onClick={() => {}} />
           <div className="text-sm flex font-medium items-center justify-center gap-2">
             Already have an account?
-            <Link to="/login">
+            <Link to="/">
               <span className="text-primary cursor-pointer">Login</span>
             </Link>
           </div>

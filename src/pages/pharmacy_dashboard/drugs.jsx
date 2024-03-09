@@ -19,7 +19,7 @@ export default function drugs() {
   const [dropDown, setDropDown] = useState(false);
   const [viewCategory, setViewCategory] = useState(false);
   const [viewCategoryItem, setViewCategoryItem] = useState(false);
-  const [openDrug, setOpenDrug] = useState(true);
+  const [openDrug, setOpenDrug] = useState(false);
   const drugCategory = [
     "Allergies",
     "Anti-biotics",
