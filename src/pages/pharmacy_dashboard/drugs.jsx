@@ -5,6 +5,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { MdOutlineFilterAlt } from "react-icons/md";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import AddCategory from './model/AddCategory';
+import AddCategoryItem from "./model/AddCategoryItem";
+import AddDrug from './model/AddDrug';
 import Layout from "../Layout";
 import drug1 from "../../assets/images/drug1.png";
 import drug2 from "../../assets/images/drug2.png";
@@ -15,7 +17,9 @@ import drug4 from "../../assets/images/drug4.png";
 export default function drugs() {
   
   const [dropDown, setDropDown] = useState(false);
-  const [viewCategory, setViewCategory] = useState(true);
+  const [viewCategory, setViewCategory] = useState(false);
+  const [viewCategoryItem, setViewCategoryItem] = useState(false);
+  const [openDrug, setOpenDrug] = useState(true);
   const drugCategory = [
     "Allergies",
     "Anti-biotics",
@@ -138,7 +142,7 @@ export default function drugs() {
               </div>
 
               <div>
-                <button  className="flex items-center justify-center w-full  border border-primary hover:bg-primary/50 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-primary text-sm px-4 py-2">
+                <button onClick={()=>{setViewCategoryItem(!viewCategoryItem)}}  className="flex items-center justify-center w-full  border border-primary hover:bg-primary/50 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-primary text-sm px-4 py-2">
                 <FaPencilAlt className="w-5 h-5 mr-2" />
                 Edit Category Items
                </button>              
@@ -172,7 +176,9 @@ export default function drugs() {
           </div>
         </main>
       </div>
-      { viewCategory ? <AddCategory openView={viewCategory} setOpenView={setViewCategory} data={drugCategory}  /> : '' }
+      {viewCategory ? <AddCategory openView={viewCategory} setOpenView={setViewCategory} data={drugCategory} /> : ''}
+      {viewCategoryItem ? <AddCategoryItem openView={viewCategoryItem} setOpenView={setViewCategoryItem} data={drugs} openDrug={openDrug} setOpenDrug={setOpenDrug} /> : ''}    
+      {openDrug ? <AddDrug openView={openDrug} setOpenView={setOpenDrug} /> : ''}
     </Layout>
   );
 }

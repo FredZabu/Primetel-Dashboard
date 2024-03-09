@@ -22,12 +22,17 @@ function AddCategory({ openView, setOpenView, data }) {
 
         <hr className='mt-0 bg-slate-500' />
         <div className=' w-[95%] mt-4 mx-auto '>
-            <div className="grid grid-cols-2 ">
+            <div className="grid grid-cols-2 gap-2">
             {
               data.map((drug, index) => {
                 
-                return <div key={index} className=" mt-2 w-[50%] bg-category text-[#52575C] px-4 py-2 flex items-center justify-between">
-                  <p className="text-[#100DB1]">{drug}</p>
+                return <div key={index} className="rounded-3xl mt-2 min-w-[50%] bg-category text-[#52575C] px-4 py-2 flex items-center justify-between">
+                  <div className='flex items-center space-x-4'>
+                    <div className='h-[10px] w-[10px] bg-[#100DB1] rounded-full'></div>
+                    <p className="text-[#100DB1]">{drug}</p>
+                  </div>
+                  
+                  
                   <div className='inline-block cursor-pointer' onClick={()=>{setOpenView(!openView)}}>
                     <RxCross1 size={14} color="#C92B27"/>
                   </div>               
