@@ -12,7 +12,20 @@ function AddDrug({ openView, setOpenView }) {
         <div className="sticky bg-[#F0F3F9] z-50 top-0 py-4 left-0 right-0">
           <div className=' w-[95%]  mx-auto '>
           <div className='flex justify-between items-center  '>
-            <h1 className='font-bold text-xl'>Edit Category Items</h1>
+                <div className='flex items-center space-x-4'>
+                <h1 className='font-bold text-xl'>Edit Category Items</h1>
+                <div className="rounded-3xl  bg-category text-[#52575C] px-2 py-1 flex items-center justify-between space-x-4">
+                  <div className='flex items-center space-x-4'>
+                    <div className='h-[7px] w-[7px] bg-[#100DB1] rounded-full'></div>
+                    <p className="text-[#100DB1]">Allergies</p>
+                  </div>
+                  
+                  
+                  <div className='inline-block cursor-pointer'>
+                    <RxCross1 size={14} color="#C92B27"/>
+                  </div>               
+                </div>              
+              </div>          
             <div className='inline-block cursor-pointer' onClick={()=>{setOpenView(!openView)}}>
               <RxCross1 size={20} />
             </div>            
@@ -60,7 +73,6 @@ function AddDrug({ openView, setOpenView }) {
                       <option value="Out of Stock">Out of Stock</option>
                     </select>       
                   </div>
-
                 </div>
                 <div className='mt-5 grid place-items-center'>
                     <div className='inline-block'>

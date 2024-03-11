@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
-import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
-import PaginationButton from "./PaginationButton";
+import {  FaEye, FaTrash } from "react-icons/fa";
+import PaginationButton from "../../../components/PaginationButton.jsx";
 import { Table } from "flowbite-react";
 
 import { useDispatch } from "react-redux";
-import { removePatient } from "../store"; 
+import { removePatient } from "../../../store/index.js"; 
 import { useState } from "react";
-
-import EditModal from "../modals/EditModal.jsx";
-import ViewModal from "../views/ViewModal.jsx";
+import ViewModal from "../../../views/ViewModal.jsx";
 
 
 const OrderTable = ({ tableHeaders, tableData, status, actions, funct }) => {

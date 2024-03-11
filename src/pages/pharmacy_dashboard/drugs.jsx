@@ -154,8 +154,20 @@ export default function drugs() {
                 Anti-biotics
                 <RiArrowDropDownLine className="w-5 h-5 ml-2 "/>
               </button>   
-              <div className={` ${dropDown ? 'block' : 'hidden'} absolute  w-[50vw] bg-white min-h-[200px] border-2 border-black z-[1000] top-[100%] mt-1`}>
-           
+              <div className={`${dropDown ? 'block' : 'hidden'} absolute  w-[50vw] bg-white min-h-[200px] py-4 px-4 border z-[8] top-[100%] mt-1`}>
+                <div className="grid grid-cols-4 gap-2">
+                  {
+                   drugCategory.map((drug, index) => {
+                
+                    return <div key={index} className="rounded-3xl mt-2 min-w-[50%] bg-white border border-[#100db1] text-[#52575C] px-4 py-1 flex items-center justify-between">
+                      <div className='flex items-center space-x-4'>
+                        <div className='h-[10px] w-[10px] bg-[#100DB1] rounded-full'></div>
+                        <p className="text-[#100DB1]">{drug}</p>
+                      </div>             
+                    </div>
+              })
+              }                       
+                 </div>         
               </div>
             </div> 
             

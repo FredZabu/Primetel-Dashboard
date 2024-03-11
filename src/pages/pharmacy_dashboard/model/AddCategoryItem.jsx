@@ -15,8 +15,22 @@ function AddCategoryItem({ openView, setOpenView, data, openDrug, setOpenDrug })
 
         <div className="sticky bg-[#F0F3F9] z-50 top-0  left-0 right-0">
           <div className=' w-[95%]  mx-auto py-4'>
-          <div className='flex justify-between items-center  '>
-            <h1 className='font-bold text-xl'>Edit Category Items</h1>
+            <div className='flex justify-between items-center  '>
+              <div className='flex items-center space-x-4'>
+                <h1 className='font-bold text-xl'>Edit Category Items</h1>
+                <div className="rounded-3xl  bg-category text-[#52575C] px-2 py-1 flex items-center justify-between space-x-4">
+                  <div className='flex items-center space-x-4'>
+                    <div className='h-[7px] w-[7px] bg-[#100DB1] rounded-full'></div>
+                    <p className="text-[#100DB1]">Allergies</p>
+                  </div>
+                  
+                  
+                  <div className='inline-block cursor-pointer'>
+                    <RxCross1 size={14} color="#C92B27"/>
+                  </div>               
+                </div>              
+            </div>
+            
             <div className='inline-block cursor-pointer' onClick={()=>{setOpenView(!openView)}}>
               <RxCross1 size={20} />
             </div>            
