@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 "use client";
 
@@ -8,10 +9,11 @@ import PropTypes from "prop-types";
 import CreateModal from "./CreateModal";
 import { handleSearch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import { MdOutlineFilterAlt } from "react-icons/md";
 
 
 export default function MiniNavBar({ buttonText, modalType, funct, setTableData, tableData }) {
-  
+  const [dropDown, setDropDown] = useState(false);
   const dispatch = useDispatch();
   const searchTerm = useSelector((state) => {
   
@@ -34,15 +36,56 @@ export default function MiniNavBar({ buttonText, modalType, funct, setTableData,
   // };
 
   return (
-    <div className="bg-white rounded-md border border-textDisable shadow-md w-full  px-4 py-2 flex md:items-center flex-col gap-2 md:flex-row">
-      <button
-        type="submit"
-        className="border max-w-[100px] h-10 flex items-center gap-2 border-textDisable  bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5"
-      >
-        <BsFillFunnelFill className="w-6 h-6 text-primary" />
-        <p className="textDark">Filter</p>
-      </button>
-      <form className="flex items-center w-3/4" >
+    <div className="bg-white rounded-md border border-textDisable shadow-md w-full  px-4 py-2 flex md:items-center flex-col gap-2 md:flex-row md:justify-between">
+        <div className=' '>
+              <div className="inline-block mt-0 no-scrollbar relative overscroll-y-none ">
+              <button  className="inline-flex items-center justify-center w-full  border border-primary hover:bg-primary/50  focus:outline-none focus:ring-red-300 font-medium rounded-lg text-primary hover:text-white text-sm px-4 py-2" onClick={()=>{setDropDown(!dropDown)}}>
+                <MdOutlineFilterAlt className="w-5 h-5 mr-2 " />
+                Filter
+               
+              </button>   
+              <div className={`${dropDown ? 'block' : 'hidden'} absolute  min-w-[15vw] bg-white min-h-[200px] py-4 px-4 border z-[8] top-[100%] mt-1`}>
+                <div className="">
+                  <div>
+                    <p>FILTER BY:</p>
+                    <div className="flex items-center mb-2">
+                      <input checked type="radio" value="" name="latest" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                      <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">All</label>
+                    </div>
+                    <div className="flex items-center mb-2">
+                        <input  type="radio" value="" name="latest" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Most Recent</label>
+                  </div>
+                  <div className="flex items-center">
+                        <input   type="radio" value="" name="latest" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Most Outdated</label>
+                    </div>                  
+                  </div>
+                  <div className='mt-5'>
+                    <p>STATUS</p>
+                    <div className="flex items-center mb-2">
+                      <input checked  type="radio" value="Delivered" name="status" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                      <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Delivered</label>
+                    </div>
+                    <div className="flex items-center mb-2">
+                        <input  type="radio" value="Pending" name="status" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
+                  </div>
+                  <div className="flex items-center">
+                        <input   type="radio" value="Missed" name="status" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Missed</label>
+                    </div>                  
+                  </div>                                   
+              </div>  
+              <div className='mt-4'>
+                <button  className="inline-flex items-center justify-center w-full  border border-primary hover:bg-primary/50  focus:outline-none focus:ring-red-300 font-medium rounded-lg text-primary hover:text-white text-sm px-4 py-2" onClick={()=>{}}> 
+                 Reset               
+                </button> 
+              </div>
+              </div>
+            </div>            
+        </div>
+      {/* <form className="flex items-center w-3/4" >
         <div className="relative w-full flex">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
@@ -80,7 +123,7 @@ export default function MiniNavBar({ buttonText, modalType, funct, setTableData,
             Search
           </button>
         </div>
-      </form>
+      </form> */}
       <div className="flex items-center">
         <button
           onClick={() => props.setOpenModal(true)}
