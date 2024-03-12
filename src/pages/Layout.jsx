@@ -5,7 +5,7 @@ import { BsFillCalendar3WeekFill, BsPeopleFill } from "react-icons/bs";
 import { FaFilePrescription, FaPills, FaCartPlus } from "react-icons/fa";
 import { MdLocalPharmacy } from "react-icons/md";
 import { CiPillsBottle1 } from "react-icons/ci";
-import { GrTest } from "react-icons/gr";
+import { ImLab } from "react-icons/im";
 
 
 const Layout = ({ children }) => {
@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
     }, 
     {
       title: "Tests",
-      icon: <GrTest size={23} />,
+      icon: <ImLab size={23} />,
       link: "/tests",
       role: "laboratory"
     },

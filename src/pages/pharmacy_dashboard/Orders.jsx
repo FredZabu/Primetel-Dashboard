@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 
 import  {useState} from 'react';
 import NavbarWithNotification from "../../components/Navbar";
 import Layout from "../Layout";
 import OrderTable from "./model/OrderTable";
 import { MdOutlineFilterAlt } from "react-icons/md";
-import { RiArrowDropDownLine } from "react-icons/ri";
 
 
-export default function orders() {
+
+export default function Orders() {
   const [dropDown, setDropDown] = useState(false);
   const tableHeaders = [
       "Order_ID",

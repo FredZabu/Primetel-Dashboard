@@ -14,7 +14,7 @@ import drug3 from "../../assets/images/drug3.png";
 import drug4 from "../../assets/images/drug4.png";
 
 
-export default function drugs() {
+export default function Drugs() {
   
   const [dropDown, setDropDown] = useState(false);
   const [viewCategory, setViewCategory] = useState(false);
