@@ -1,0 +1,70 @@
+{
+    "user":[
+        {
+            "name": "Asiimwe Fred",
+            "role": "doctor",
+            "age": "23"
+        }
+    ],
+
+    "patients":[
+        {
+            "id": "001",
+            "name": "Alphonso Davies",
+            "gender": "Male",
+            "email": "alphonso@gmail.com",
+            "phoneNumber": "+256 781936669",
+            "date": "12/06/2023"
+        },
+        {
+            "id": "002",
+            "name": "Asiimwe Fred",
+            "gender": "Male",
+            "email": "fred@gmail.com",
+            "phoneNumber": "+256 781936669",
+            "date": "12/03/2024"
+        },
+        {
+            "id": "003",
+            "name": "Imani Grace",
+            "gender": "Female",
+            "email": "grace@gmail.com",
+            "phoneNumber": "+256 781936669",
+            "date": "12/02/2024"
+        },
+        {
+            "id": "004",
+            "name": "Shukura Lillian",
+            "gender": "Female",
+            "email": "shukuru@gmail.com",
+            "phoneNumber": "+256 781936669",
+            "date": "12/06/2023"
+        }                       
+    ],
+    "appointments":[
+        {
+            "id":"A001",
+            "meetingDate": "12/04/2024",
+            "meetingTime": "10:30 am - 11:00 am",
+            "notes": "To be seen by the doctor",
+            "status": "upcoming",
+            "patientId":"001"
+        },
+        {
+            "id":"A002",
+            "meetingDate": "02/02/2024",
+            "meetingTime": "9:30 am - 10:00 am",
+            "notes": "To be seen by the doctor",
+            "status": "missed",
+            "patientId":"002"
+        },
+        {
+            "id":"A001",
+            "meetingDate": "23/03/2024",
+            "meetingTime": "10:30 am - 11:00 am",
+            "notes": "To be seen by the doctor",
+            "status": "delivered",
+            "patientId":"003"
+        }                
+    ]
+}

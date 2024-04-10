@@ -3,10 +3,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const PatientApi = createApi({
     reducerPath: "patient",
-    baseQuery: fetchBaseQuery({ baseUrl: "" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/" }),
     endpoints: (builder) => {
         return {
-            fetchPatients: builder.query({
+            getPatients: builder.query({
                 query: () => {
                     return {
                         url: "/patients",
@@ -16,26 +16,33 @@ export const PatientApi = createApi({
             }),
             addPatient: builder.mutation({
                 query: builder.mutation({
-                    query: (values) => {
+                    query: (patient) => {
                         return {
                             url: "/patients",
+                            body: {
+                                "name": patient.name,
+                                "gender": patient.gender,
+                                "email": patient.email,
+                                "phoneNumber": patient.phoneNumber,
+                                "date": patient.date
+                            },
                             method: "POST"
                         }
                     }
                 })
             }),
-            editPatient: builder.mutation({
-                query: (userId) => {
-                    return {
-                        url: "/patients",
-                        method: "PUT"
-                    }
-                }
-            }),
+            // editPatient: builder.mutation({
+            //     query: (userId) => {
+            //         return {
+            //             url: "/patients",
+            //             method: "PUT"
+            //         }
+            //     }
+            // }),
             deletePatient: builder.mutation({
                 query: (userId) => {
                     return {
-                        url: "/patients",
+                        url: "/patients"+userId,
                         method: "DELETE"
                     }
                 }
@@ -44,4 +51,4 @@ export const PatientApi = createApi({
     }
 })
 
-export const { useAddPatientMutation, useEditPatientMutation, useDeletePatientMutation, useFetchPatientsQuery } = PatientApi;
+export const { useAddPatientMutation, useDeletePatientMutation, useGetPatientsQuery } = PatientApi;

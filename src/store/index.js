@@ -1,9 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
+/* eslint-disable no-unused-vars */
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
 import { addPatient, editPatient, removePatient, patientsReducer } from "./slices/PatientsSlice";
 import { handleSearch, searchReducer } from "./slices/SearchSlice";
 import { addAppointment, removeAppointment, editAppointment, appointmentReducer } from "./slices/AppointmentSlice";
 import { PatientApi } from "./api/PatientApi";
+import { AppointmentApi } from "./api/AppointmentApi";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 const store = configureStore({
 
@@ -11,9 +14,17 @@ const store = configureStore({
         patients: patientsReducer,
         searchTerm: searchReducer,
         appointments: appointmentReducer,
-        [PatientApi.reducerPath]: PatientApi.reducer
+        [PatientApi.reducerPath]: PatientApi.reducer,
+        [AppointmentApi.reducerPath]: AppointmentApi.reducer
+    },
+    middleware: (getDefaultMiddleware) => {
+        return getDefaultMiddleware().concat(PatientApi.middleware).concat(AppointmentApi.middleware);
     }
 })
 
+setupListeners(store.dispatch);
 
 export { addPatient, editPatient, removePatient, handleSearch, addAppointment, removeAppointment, editAppointment, store };
+    
+export { useAddPatientMutation, useDeletePatientMutation, useGetPatientsQuery } from "./api/PatientApi";
+export { useGetAppointments, useAddAppointment, useRemoveAppointment } from "./api/AppointmentApi"

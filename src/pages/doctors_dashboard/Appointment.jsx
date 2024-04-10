@@ -3,7 +3,7 @@ import NavbarWithNotification from "../../components/Navbar";
 import MiniNavBar from "../../components/MiniNavBar";
 import Layout from "../Layout";
 import TableComponent from "../../components/TableComponent";
-import MiniNavBar2 from '../../components/MiniNavBar2';
+
 
 export default function Appointment() {
     const tableHeaders = [
