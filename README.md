@@ -34,3 +34,25 @@ Currently we are using the json server for development purpose.
 3. With that you are able to run it and make it work.
 
 ## Getting into the Project
+
+The figure below shows the signUp page through which doctors, pharmacies and laboratories create their accounts.
+![](./solution-screenShots/signUp1.png.png)
+![](./solution-screenShots/signUp2.png.png)
+
+This figure below shows a sign-in page.
+![](./solution-screenShots/login.png)
+
+### Doctor Module
+
+This module allows doctors to add in new patients and also view, add and delete prescriptions and tests made to patients.
+![](./solution-screenShots/doctor1.png)
+
+### Pharmacy Module
+
+This module allows Pharmacies to view, add, delete drugs plus also available orders made.
+![](./solution-screenShots/pharmacy.png)
+
+### Laboratory Module
+
+This module allows Laboratories to view, add, delete tests plus also available orders made.
+![](./solution-screenShots/laboratory.png)
