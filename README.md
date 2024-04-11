@@ -36,8 +36,8 @@ Currently we are using the json server for development purpose.
 ## Getting into the Project
 
 The figure below shows the signUp page through which doctors, pharmacies and laboratories create their accounts.
-![](./solution-screenShots/signUp1.png.png)
-![](./solution-screenShots/signUp2.png.png)
+![](./solution-screenShots/signUp1.png)
+![](./solution-screenShots/signUp2.png)
 
 This figure below shows a sign-in page.
 ![](./solution-screenShots/login.png)
