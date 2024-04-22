@@ -1,20 +1,21 @@
 import Layout from "./Layout";
-import patient from "../../assets/images/patient.png";
+// import patient from "../../assets/images/patient.png";
 import provider from "../../assets/images/provider.png";
 import pharmacy from "../../assets/images/pharmacy.png";
 import lab from "../../assets/images/lab.png";
 import ButtonLong from "../../components/ButtonLong";
 import { useNavigate } from "react-router";
-import {useState} from "react";
-const SignUp1 = () => {
+import { useState } from "react";
+import { toast } from "react-hot-toast";
+const GetStarted = () => {
   const [selectedUser,setSelectedUser] = useState(""); 
   const [activeCard, setActiveCard] = useState("");
   const userTypes = [
-    {
-      type: "Patient",
-      icon: patient,
-      value: "patient",
-    },
+    // {
+    //   type: "Patient",
+    //   icon: patient,
+    //   value: "patient",
+    // },
     {
       type: "Provider",
       icon: provider,
@@ -39,7 +40,21 @@ const SignUp1 = () => {
 
   const navigate = useNavigate();
   const handleButtonSubmit = () => {
-    navigate("/signup2", {state: {data: selectedUser }})
+    if (selectedUser) {
+         navigate("/register", {state: {data: selectedUser }})
+    }else{
+      toast.error("Select a Role", {
+          style: {
+    background: 'red',
+    color: 'white',
+        },
+          iconTheme: {
+    primary: '#fff',
+    secondary: '#000',
+  },
+      });
+    }
+ 
   }
   return (
     <Layout>
@@ -47,7 +62,7 @@ const SignUp1 = () => {
         How would you like to get started?
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {userTypes.map((user) => {
+        {userTypes.map((user, index) => {
           return (
             <div
               onClick={() => {
@@ -58,7 +73,7 @@ const SignUp1 = () => {
                 user.value === activeCard
                   ? "bg-primary/20"
                   : ""
-              }`}
+              } ${index === 0 ? "col-span-2" : ""}`}
             >
               <div className="w-8">
                 <img src={user.icon} alt={user.type} />
@@ -79,4 +94,4 @@ const SignUp1 = () => {
   );
 };
 
-export default SignUp1;
+export default GetStarted;

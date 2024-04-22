@@ -1,7 +1,7 @@
 
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {Appointment, Drugs, ForgotPassword, Home, Laboratory, LaboratoryOrders, LaboratoryPage, Patient, Pharmacy, PharmacyOrders, PharmacyPage, Prescription, Profile, ResetPassword, SignUp1, SignUp2, Tests, VerifyAccount,Login } from "./pages/index.js"
+import {Appointment, Drugs, ForgotPassword, Home, Laboratory, LaboratoryOrders, LaboratoryPage, Patient, Pharmacy, PharmacyOrders, PharmacyPage, Prescription, Profile, ResetPassword, GetStarted, Register, Tests, VerifyAccount,Login } from "./pages/index.js"
 
 function App() {
   return (
@@ -10,11 +10,11 @@ function App() {
         <Routes>
           
           <Route path="/" element={<Login />} />
-          <Route path="/signup2" element={<SignUp2 />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/verifyaccount" element={<VerifyAccount />} />
-          <Route path="/signup1" element={<SignUp1 />} />
+          <Route path="/getstarted" element={<GetStarted />} />
 
           {/* Doctor routes */}
           <Route path="/dashboard" element={<Home />} />

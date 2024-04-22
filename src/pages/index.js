@@ -1,8 +1,8 @@
-export { default as SignUp2 } from "./auth/SignUp2";
+export { default as Register } from "./auth/Register";
 export { default as ResetPassword } from "./auth/ResetPassword";
 export { default as ForgotPassword } from "./auth/ForgotPassword";
 export { default as VerifyAccount } from "./auth/VerifyAccount";
-export { default as SignUp1 } from "./auth/SignUp1";
+export { default as GetStarted } from "./auth/GetStarted";
 export { default as Home } from "./Home";
 export { default as Appointment } from "./doctors_dashboard/Appointment";
 export { default as Patient } from "./doctors_dashboard/Patient";

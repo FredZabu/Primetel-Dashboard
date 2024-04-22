@@ -120,7 +120,7 @@ const Login = () => {
           <ButtonLong type="submit" text="Login" onClick={handleLogin} />
           <div className="text-sm flex font-medium items-center justify-center gap-2">
             Don&apos;t have an account?
-            <Link to="/signup1">
+            <Link to="/getstarted">
               <span className="text-primary cursor-pointer">Get Started</span>
             </Link>
           </div>

@@ -12,7 +12,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { Link, useLocation } from "react-router-dom";
 import InputInfoComponent from "../../components/InputInfoComponent";
 
-const SignUp2 = () => {
+const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -53,6 +53,7 @@ const SignUp2 = () => {
     onSubmit: (values) => {
       console.log("submit", values);
     },
+    
   });
 
   // getting the user selected data from previous page
@@ -234,4 +235,4 @@ const SignUp2 = () => {
   );
 };
 
-export default SignUp2;
+export default Register;
