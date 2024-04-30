@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "http://20.45.130.169:3001/api/v1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -7,6 +7,7 @@ import { addAppointment, removeAppointment, editAppointment, appointmentReducer 
 import { PatientApi } from "./api/PatientApi";
 import { AppointmentApi } from "./api/AppointmentApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { loginApi } from "./authApi/LoginApi";
 
 const store = configureStore({
 
@@ -15,10 +16,11 @@ const store = configureStore({
         searchTerm: searchReducer,
         appointments: appointmentReducer,
         [PatientApi.reducerPath]: PatientApi.reducer,
-        [AppointmentApi.reducerPath]: AppointmentApi.reducer
+        [AppointmentApi.reducerPath]: AppointmentApi.reducer,
+        [loginApi.reducerPath]: loginApi.reducer,
     },
     middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware().concat(PatientApi.middleware).concat(AppointmentApi.middleware);
+        return getDefaultMiddleware().concat(loginApi.middleware).concat(PatientApi.middleware).concat(AppointmentApi.middleware);
     }
 })
 
@@ -26,5 +28,6 @@ setupListeners(store.dispatch);
 
 export { addPatient, editPatient, removePatient, handleSearch, addAppointment, removeAppointment, editAppointment, store };
     
+export { useLoginMutation } from "./authApi/LoginApi"   
 export { useAddPatientMutation, useDeletePatientMutation, useGetPatientsQuery } from "./api/PatientApi";
 export { useGetAppointments, useAddAppointment, useRemoveAppointment } from "./api/AppointmentApi"
