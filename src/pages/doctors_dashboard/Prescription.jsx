@@ -3,10 +3,15 @@ import NavbarWithNotification from "../../components/Navbar";
 import MiniNavBar from "../../components/MiniNavBar";
 import Layout from "../Layout";
 import TableComponent from "../../components/TableComponent";
-
+import { useEffect } from "react";
 
 export default function Prescription() {
-
+  useEffect(() => {
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener('popstate', function (event){
+        window.history.pushState(null, document.title,  window.location.href);
+    });
+  },[])
     const tableHeaders = [
       "ID",
       "Name",

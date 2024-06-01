@@ -2,15 +2,21 @@ import PropTypes from "prop-types";
 import {
   BsArrowLeftShort,
 } from "react-icons/bs";
-import {  BiSolidExit } from "react-icons/bi";
-
-
+import { BiSolidExit } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import LogoLong from "../assets/images/primetel_logo.png";
 import Logo from "../assets/images/primetel_logo_short.png";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Sidebar = ({menuItems}) => {
+const Sidebar = ({ menuItems }) => {
+
+  const navigate = useNavigate();
+  const role = useSelector((state) => {
+      return state.auth.user.role;
+  })
+  console.log(role);
   const [open, setOpen] = useState(true);
   return (
     <div
@@ -33,7 +39,7 @@ const Sidebar = ({menuItems}) => {
         <ul className="pt-4 px-2">
           {menuItems.map((menu, index) => {
             return (
-              <div key={index} className={` ${menu.role === "doctor" || menu.role === "default" ? '' : 'hidden'} `
+              <div key={index} className={` ${menu.role === role || menu.role === "default" ? '' : 'hidden'} `
           } >
                               <NavLink  to={menu.link}   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? " font-semibold tracking-wide   hover:bg-primary/20 rounded-md  py-4 text-[14px] flex items-center gap-x-4 cursor-pointer px-2 text-primary duration-300 bg-primary/20 mb-2" : "text-textLight font-semibold tracking-wide  hover:bg-primary/20 rounded-md  py-4 text-[14px] flex items-center gap-x-4 cursor-pointer px-2 hover:text-primary duration-300 mb-2"
@@ -68,7 +74,11 @@ const Sidebar = ({menuItems}) => {
               </div>
             )}
           </div>
-          <div className="mb-4 cursor-pointer text-textLight hover:text-primary duration-300">
+        <div className="mb-4 cursor-pointer text-textLight hover:text-primary duration-300" onClick={() => {
+          // dispatch(logout)
+          sessionStorage.clear("user");
+          navigate("/")
+        }}>
             <BiSolidExit size={30} />
           </div>          
         </div>      
@@ -76,6 +86,6 @@ const Sidebar = ({menuItems}) => {
   );
 };
 Sidebar.propTypes = {
-  menuItems: PropTypes.node.isRequired,
+  menuItems: PropTypes.array.isRequired,
 };
 export default Sidebar;

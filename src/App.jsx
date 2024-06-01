@@ -1,9 +1,20 @@
-
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {Appointment, Drugs, ForgotPassword, Home, Laboratory, LaboratoryOrders, LaboratoryPage, Patient, Pharmacy, PharmacyOrders, PharmacyPage, Prescription, Profile, ResetPassword, GetStarted, Register, Tests, VerifyAccount,Login } from "./pages/index.js"
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "./store/index.js";
+import ComponentAuth from "./pages/ComponentAuth/ComponentAuth.jsx";
 
 function App() {
+  const dispatch = useDispatch();
+  const nullUser = JSON.stringify({
+                    role: null,
+                    token: null
+                })
+  const user = JSON.parse(sessionStorage.getItem("user") || nullUser)
+  useEffect(() => {
+    dispatch(setUser(user))
+  },[]) 
   return (
     <>
       <BrowserRouter basename="/">
@@ -17,23 +28,23 @@ function App() {
           <Route path="/getstarted" element={<GetStarted />} />
 
           {/* Doctor routes */}
-          <Route path="/dashboard" element={<Home />} />
-          <Route path="/appointments" element={<Appointment />} />
-          <Route path="/patients" element={<Patient />} />
-          <Route path="/prescriptions" element={<Prescription />} />
-          <Route path="/pharmacies" element={<Pharmacy />} />
-          <Route path="/pharmacies/:pharmacyId" element={<PharmacyPage /> } />
-          <Route path="/laboratories" element={<Laboratory />} />
-          <Route path="/laboratories/:labId" element={<LaboratoryPage />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<ComponentAuth role="default"><Home /></ComponentAuth>} />
+          <Route path="/appointments" element={<ComponentAuth role="doctor"><Appointment /></ComponentAuth>} />
+          <Route path="/patients" element={ <ComponentAuth role="doctor"><Patient /></ComponentAuth>} />
+          <Route path="/prescriptions" element={ <ComponentAuth role="doctor"><Prescription /></ComponentAuth>} />
+          <Route path="/pharmacies" element={<ComponentAuth role="doctor"><Pharmacy /> </ComponentAuth>} />
+          <Route path="/pharmacies/:pharmacyId" element={ <ComponentAuth role="doctor"><PharmacyPage /></ComponentAuth>} />
+          <Route path="/laboratories" element={ <ComponentAuth role="doctor"><Laboratory /></ComponentAuth>} />
+          <Route path="/laboratories/:labId" element={ <ComponentAuth role="doctor"><LaboratoryPage /></ComponentAuth>} />
+          <Route path="/profile" element={ <ComponentAuth role="doctor"><Profile /></ComponentAuth>} />
 
           {/* Laboratory routes */}
-          <Route path="/laboratoryOrders" element={<LaboratoryOrders />} />
-          <Route path="/tests" element={<Tests />} />
+          <Route path="/laboratoryOrders" element={<ComponentAuth role="laboratory"><LaboratoryOrders /></ComponentAuth>} />
+          <Route path="/tests" element={<ComponentAuth role="laboratory"><Tests /></ComponentAuth>} />
 
           {/* Pharmacy routes */}
-          <Route path="/pharmacyOrders" element={<PharmacyOrders />} />
-          <Route path="/drugs" element={<Drugs />} />
+          <Route path="/pharmacyOrders" element={<ComponentAuth role="pharmacy"><PharmacyOrders /></ComponentAuth>} />
+          <Route path="/drugs" element={<ComponentAuth role="pharmacy"><Drugs /></ComponentAuth>} />
         </Routes>
       </BrowserRouter>
     </>

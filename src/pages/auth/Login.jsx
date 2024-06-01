@@ -2,6 +2,7 @@
 import Layout from "./Layout";
 import { Checkbox, Label } from "flowbite-react";
 import { HiMail } from "react-icons/hi";
+import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import ButtonLong from "../../components/ButtonLong";
 import { useFormik } from "formik";
@@ -11,54 +12,51 @@ import InputPassword from "../../components/InputPassword";
 import { Link, useNavigate } from "react-router-dom";
 import InputInfoComponent from "../../components/InputInfoComponent";
 import {useLoginMutation } from "../../store/index.js"
+import { useDispatch } from "react-redux";
+import { setUser} from "../../store/index.js";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); 
   const [passwordVisible, setPasswordVisible] = useState(false);
-
+  const nullUser = JSON.stringify({
+                    role: null,
+                    token: null
+                })
+  const user = JSON.parse(sessionStorage.getItem("user") || nullUser)
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-  async function fetchData(url, requestOptions) {
-    const response = await fetch(url, requestOptions);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`)
-    }
-    const data = await response.json();
-    return data;
-  }
-  async function testFetch() {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: "fredasiimwe133@gmail.com", password: "Fred@123"
-      })
-    }
-    const url = 'http://20.45.130.169:3001/api/v1/login';
-    try {
-      const data = await fetchData(url, requestOptions);
-      console.log(data);
-    } catch (error) {
-      console.error(error)
-    }
-}
+
+  const [login, { data, isLoading, isSuccess, isError }] = useLoginMutation();
   useEffect(() => {
-    testFetch();
-  },[])
+    if (user.token) {
+      navigate("/dashboard")
+    }
+    if (isSuccess) {
+      navigate("/dashboard")
+      toast.success('Login Successful!');
+      dispatch(setUser(data))
+      console.log(data);
+    } 
+    if (isError) {
+     
+      toast.error("Invalid email or password provided!", {
+        style: {
+          background: 'red',
+          color: 'white',
+        },
+        iconTheme: {
+          primary: '#fff',
+          secondary: '#000',
+        },
+      });
+      
+    }
+    
+  },[isSuccess, isError])
 
-  // const [login,{data, isLoading, isSuccess, isError, error}] = useLoginMutation();
 
-  const handleClick = async () => {
-    console.log("Started Call");
-        const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: "fredasiimwe133@gmail.com", password: "Fred@123" })
-        };
-    const response = await fetch('http://20.45.130.169:3001/api/v1/login', requestOptions);
-    const data = await response.json();
-    console.log(data)
-  }
 
   const formik = useFormik({
     initialValues: {
@@ -74,15 +72,12 @@ const Login = () => {
     }),
     onSubmit: (values) => {
       console.log("submit", values);
-    //   login(values)
-    // console.log(data)
+      login(values)
+ 
     },
   });
 
-  // const navigate = useNavigate();
-  // const handleLogin = () => {
-  //   navigate("/dashboard")
-  // }
+
   return (
     <Layout>
       <div className="flex w-full items-center justify-center mt-4">
@@ -161,7 +156,7 @@ const Login = () => {
               </Link>
             </div>
           </div>
-          <ButtonLong type="submit" text="Login" onClick={handleClick} />
+          <ButtonLong type="submit" text="Login" isLoading= {isLoading} isLoadingText="loging in" />
           <div className="text-sm flex font-medium items-center justify-center gap-2">
             Don&apos;t have an account?
             <Link to="/getstarted">

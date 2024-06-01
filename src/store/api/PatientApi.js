@@ -3,13 +3,29 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const PatientApi = createApi({
     reducerPath: "patient",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/" }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: "/api/v1",
+        prepareHeaders: (headers, {getState}) => {
+            const state = getState();
+            const token = state.auth.user.token
+            // console.log(token)
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`)
+            }
+            // console.log(headers);
+            return headers;
+        }
+    }),
     endpoints: (builder) => {
         return {
             getPatients: builder.query({
                 query: () => {
                     return {
                         url: "/patients",
+                        params: {
+                            "page": 1,
+                            "per_page": 10
+                        },
                         method: "GET"
                     }
                 }

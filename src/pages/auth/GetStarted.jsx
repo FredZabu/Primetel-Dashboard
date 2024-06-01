@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 const GetStarted = () => {
   const [selectedUser,setSelectedUser] = useState(""); 
   const [activeCard, setActiveCard] = useState("");
+  
   const userTypes = [
     // {
     //   type: "Patient",
@@ -19,7 +20,7 @@ const GetStarted = () => {
     {
       type: "Provider",
       icon: provider,
-      value: "provider",
+      value: "doctor",
     },
     {
       type: "Pharmacy",
@@ -29,7 +30,7 @@ const GetStarted = () => {
     {
       type: "Lab",
       icon: lab,
-      value: "lab",
+      value: "laboratory",
     },
   ];
   const handleSelectUser = (user) => {
@@ -61,6 +62,7 @@ const GetStarted = () => {
       <div className="font-bold text-xl mb-8">
         How would you like to get started?
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {userTypes.map((user, index) => {
           return (
@@ -89,6 +91,7 @@ const GetStarted = () => {
         text="Get Started"
         type="submit"
         onClick={handleButtonSubmit}
+        
       />
     </Layout>
   );

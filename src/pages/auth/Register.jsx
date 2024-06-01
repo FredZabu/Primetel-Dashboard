@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ButtonLong from "../../components/ButtonLong";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Layout from "./Layout";
 import { Label } from "flowbite-react";
+import { toast } from "react-hot-toast";
 import InputAuth from "../../components/InputAuth";
 import { HiMail } from "react-icons/hi";
 import { BsFillPersonFill, BsFillTelephoneFill } from "react-icons/bs";
 import InputPassword from "../../components/InputPassword";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import InputInfoComponent from "../../components/InputInfoComponent";
+import { useRegisterMutation } from "../../store";
+
 
 const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -18,6 +21,39 @@ const Register = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+    // getting the user selected data from previous page
+  const location = useLocation();
+  const selectedUser = location.state?.data;
+  const navigate = useNavigate(); 
+
+  const [register, { isLoading, isError, isSuccess, data,error }] = useRegisterMutation();
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/")
+      toast.success('Register Successful!');
+      // dispatch(setUser(data))
+      console.log(data);
+    } 
+    if (isError) {
+     
+      toast.error(error.data.error, {
+        style: {
+          background: 'red',
+          color: 'white',
+        },
+        iconTheme: {
+          primary: '#fff',
+          secondary: '#000',
+        },
+      });
+      console.log("Error below");
+      console.log(error.data.error);
+      console.log("Error closed");
+      
+    }
+    
+  },[isSuccess, isError])
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -51,15 +87,15 @@ const Register = () => {
       terms: Yup.boolean().oneOf([true], "Terms of service must be checked"),
     }),
     onSubmit: (values) => {
-      console.log("submit", values);
+      const finalValues = { ...values, role: selectedUser };
+      console.log("submit", finalValues);
+      register(finalValues)
     },
     
   });
 
-  // getting the user selected data from previous page
-  const location = useLocation();
-  const selectedUser = location.state?.data;
-  console.log("from two", selectedUser)
+
+ 
   return (
     <Layout>
       <div className="flex w-full items-center justify-center">
@@ -222,7 +258,7 @@ const Register = () => {
               </p>
             </div>
           </div>
-          <ButtonLong type="submit" text="Sign Up" onClick={() => {}} />
+          <ButtonLong type="submit" text="Sign Up" onClick={() => {}} isLoading= {isLoading} isLoadingText="registering" />
           <div className="text-sm flex font-medium items-center justify-center gap-2">
             Already have an account?
             <Link to="/">

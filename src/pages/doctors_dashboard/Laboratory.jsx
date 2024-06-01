@@ -5,8 +5,15 @@ import Layout from "../Layout";
 import { FaMedkit, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom"; // Assuming you're using React Router
 import LaboratoryCard from "../../components/LaboratoryCard";
+import { useEffect } from "react";
 
 export default function Laboratory() {
+  useEffect(() => {
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener('popstate', function (event){
+        window.history.pushState(null, document.title,  window.location.href);
+    });
+  },[])
   const laboratory = [
     {
       id: 1,

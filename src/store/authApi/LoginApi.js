@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+
 export const loginApi = createApi({
     reducerPath: "login",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://20.45.130.169:3001/api/v1"
+        baseUrl: "/api/v1"
     }),
     endpoints: (builder) => {
         return {
@@ -18,9 +19,23 @@ export const loginApi = createApi({
                         method: "POST"
                     }
                 }
+            }),
+            register: builder.mutation({
+                query: (user) => {
+                    return {
+                        url: "/register/" + user.role,
+                        body: {
+                            "email":user.email,
+                            "name":user.name,
+                            "password":user.password,
+                            "phone_number":user.phoneNumber
+                        },
+                        method: "POST"
+                    }
+                }
             })
         }
     }
 })
 
-export const { useLoginMutation } = loginApi;
+export const { useLoginMutation, useRegisterMutation } = loginApi;

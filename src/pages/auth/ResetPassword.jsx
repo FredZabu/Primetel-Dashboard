@@ -128,7 +128,7 @@ const ResetPassword = () => {
           <ButtonLong type="submit" text="Reset" onClick={() => {}} />
           <div className="text-sm mt-2 flex font-medium items-center justify-center gap-2">
             Back to
-            <Link to="/login">
+            <Link to="/">
               <span className="text-primary cursor-pointer">Login</span>
             </Link>
           </div>

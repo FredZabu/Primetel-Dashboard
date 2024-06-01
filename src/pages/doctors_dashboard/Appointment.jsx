@@ -1,4 +1,4 @@
-import  {useState} from 'react';
+import  {useEffect, useState} from 'react';
 import NavbarWithNotification from "../../components/Navbar";
 import MiniNavBar from "../../components/MiniNavBar";
 import Layout from "../Layout";
@@ -6,6 +6,12 @@ import TableComponent from "../../components/TableComponent";
 
 
 export default function Appointment() {
+  useEffect(() => {
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener('popstate', function (event){
+        window.history.pushState(null, document.title,  window.location.href);
+    });
+  },[])
     const tableHeaders = [
       "Name",
       "Email",

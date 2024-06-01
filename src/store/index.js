@@ -2,6 +2,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
 import { addPatient, editPatient, removePatient, patientsReducer } from "./slices/PatientsSlice";
+import { AuthSliceReducer, getUser, setUser, logout} from "./slices/AuthSlice"
 import { handleSearch, searchReducer } from "./slices/SearchSlice";
 import { addAppointment, removeAppointment, editAppointment, appointmentReducer } from "./slices/AppointmentSlice";
 import { PatientApi } from "./api/PatientApi";
@@ -15,6 +16,7 @@ const store = configureStore({
         patients: patientsReducer,
         searchTerm: searchReducer,
         appointments: appointmentReducer,
+        auth: AuthSliceReducer,
         [PatientApi.reducerPath]: PatientApi.reducer,
         [AppointmentApi.reducerPath]: AppointmentApi.reducer,
         [loginApi.reducerPath]: loginApi.reducer,
@@ -26,8 +28,8 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { addPatient, editPatient, removePatient, handleSearch, addAppointment, removeAppointment, editAppointment, store };
-    
-export { useLoginMutation } from "./authApi/LoginApi"   
+export { addPatient, editPatient, removePatient, handleSearch, addAppointment, removeAppointment, editAppointment,getUser,setUser,logout, store };
+ 
+export { useLoginMutation, useRegisterMutation } from "./authApi/LoginApi"   
 export { useAddPatientMutation, useDeletePatientMutation, useGetPatientsQuery } from "./api/PatientApi";
 export { useGetAppointments, useAddAppointment, useRemoveAppointment } from "./api/AppointmentApi"

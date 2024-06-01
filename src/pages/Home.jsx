@@ -8,7 +8,15 @@ import Layout from "./Layout";
 import { FaUsers, FaFilePrescription, FaStar } from "react-icons/fa";
 import { BsFillCalendar3WeekFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 export default function Home() {
+  
+  useEffect(() => {
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener('popstate', function (event){
+        window.history.pushState(null, document.title,  window.location.href);
+    });
+  }, []);
   const totalPatients = useSelector((state) => { return state.patients.totalPatients });
   const cardStats = [
     {
