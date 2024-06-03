@@ -1,17 +1,21 @@
 import PropTypes from "prop-types";
-import Redirect from "../doctors_dashboard/Redirect";
-
+import { Navigate } from "react-router-dom";
 function ComponentAuth({ children,role }) {
-  console.log("Checking");
-    console.log(role);
-    console.log("Closed");
-    const nullUser = JSON.stringify({
+
+  const nullUser = JSON.stringify({
                     role: null,
                     token: null
                 })
-    const user = JSON.parse(sessionStorage.getItem("user") || nullUser)
-
-    return user.token && (user.role == role || role == "default") ? <>{children}</> : <Redirect />
+  const user = JSON.parse(sessionStorage.getItem("user") || nullUser)
+  
+  if (user.token && (user.role == role || role == "default" || role == "profile")) {
+    return <>{children}</>
+  } else if (user.token && user.role) {
+    return <Navigate to="/dashboard" />
+  } else {   
+    return <Navigate to="/" />
+  }
+  
 }
 ComponentAuth.propTypes = {
   children: PropTypes.node.isRequired,

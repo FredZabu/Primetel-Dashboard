@@ -5,8 +5,7 @@ import { toast } from "react-hot-toast";
 import Layout from "../Layout";
 import TableComponent from "../../components/TableComponent";
 import {useGetPatientsQuery} from "../../store/index.js"
-import { useSelector } from "react-redux";
-
+import getAccessToken from "../../store/api/getAccessToken.js";
 export default function Patient() {
     const tableHeaders = [
       "name",
@@ -16,26 +15,24 @@ export default function Patient() {
       "date",
       
     ];
-  const { data, error, isLoading,isError,isSuccess } = useGetPatientsQuery();
+    const token = getAccessToken()
+  const { data, error, isLoading,isError,isSuccess } = useGetPatientsQuery(token);
 
   const [dataTable, setDataTable] = useState([])
-  const user = JSON.parse(sessionStorage.getItem("user") || '{}')
-  const handleTestRequest = async () => {
-    
-    const response = await fetch("/api/v1/patients", { headers:{Authorization: ` ${user.token}`} })
-    console.log("Start");
-    console.log(response);
-    console.log("End");
-  }
+
   useEffect(() => {
-
-    handleTestRequest();
-
     if (isSuccess) {
-      setDataTable(data)
+      console.log(data.data)
+      // setDataTable(data)
+      // console.log(dataTable);
+      toast.success("Success")
     }
     if (isError) {
-    console.log(error);
+      console.error('Error object:', error);
+    if (error.data) {
+      console.error('Error data:', error.data);
+    }
+  
       toast.error(error.data, {
         style: {
           background: 'red',
@@ -65,7 +62,7 @@ export default function Patient() {
             {
               isLoading ? <div>Loading</div> :             <div className="mt-4">
               <TableComponent
-                tableData={dataTable}
+                tableData={[]}
                 tableHeaders={tableHeaders}
                 status={false}
                 actions={true}

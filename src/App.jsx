@@ -29,14 +29,14 @@ function App() {
 
           {/* Doctor routes */}
           <Route path="/dashboard" element={<ComponentAuth role="default"><Home /></ComponentAuth>} />
-          <Route path="/appointments" element={<ComponentAuth role="doctor"><Appointment /></ComponentAuth>} />
-          <Route path="/patients" element={ <ComponentAuth role="doctor"><Patient /></ComponentAuth>} />
-          <Route path="/prescriptions" element={ <ComponentAuth role="doctor"><Prescription /></ComponentAuth>} />
-          <Route path="/pharmacies" element={<ComponentAuth role="doctor"><Pharmacy /> </ComponentAuth>} />
-          <Route path="/pharmacies/:pharmacyId" element={ <ComponentAuth role="doctor"><PharmacyPage /></ComponentAuth>} />
-          <Route path="/laboratories" element={ <ComponentAuth role="doctor"><Laboratory /></ComponentAuth>} />
-          <Route path="/laboratories/:labId" element={ <ComponentAuth role="doctor"><LaboratoryPage /></ComponentAuth>} />
-          <Route path="/profile" element={ <ComponentAuth role="doctor"><Profile /></ComponentAuth>} />
+          <Route path="/appointments" element={<ComponentAuth role="provider"><Appointment /></ComponentAuth>} />
+          <Route path="/patients" element={ <ComponentAuth role="provider"><Patient /></ComponentAuth>} />
+          <Route path="/prescriptions" element={ <ComponentAuth role="provider"><Prescription /></ComponentAuth>} />
+          <Route path="/pharmacies" element={<ComponentAuth role="provider"><Pharmacy /> </ComponentAuth>} />
+          <Route path="/pharmacies/:pharmacyId" element={ <ComponentAuth role="provider"><PharmacyPage /></ComponentAuth>} />
+          <Route path="/laboratories" element={ <ComponentAuth role="provider"><Laboratory /></ComponentAuth>} />
+          <Route path="/laboratories/:labId" element={ <ComponentAuth role="provider"><LaboratoryPage /></ComponentAuth>} />
+          <Route path="/profile" element={ <ComponentAuth role="profile"><Profile /></ComponentAuth>} />
 
           {/* Laboratory routes */}
           <Route path="/laboratoryOrders" element={<ComponentAuth role="laboratory"><LaboratoryOrders /></ComponentAuth>} />

@@ -25,8 +25,9 @@ export const loginApi = createApi({
                     return {
                         url: "/register/" + user.role,
                         body: {
-                            "email":user.email,
-                            "name":user.name,
+                            "email": user.email,
+                            "name" : user.name,
+                            // "username":user.name,
                             "password":user.password,
                             "phone_number":user.phoneNumber
                         },

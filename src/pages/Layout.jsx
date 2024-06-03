@@ -15,21 +15,21 @@ const Layout = ({ children }) => {
       title: "Appointments",
       icon: <BsFillCalendar3WeekFill size={23} />,
       link: "/appointments",
-      role: "doctor"
+      role: "provider"
     },
-    { title: "Patients", icon: <BsPeopleFill size={23} />, link: "/patients",role: "doctor" },
+    { title: "Patients", icon: <BsPeopleFill size={23} />, link: "/patients",role: "provider" },
     {
       title: "Prescriptions",
       icon: <FaFilePrescription size={23} />,
       link: "/prescriptions",
-      role: "doctor"
+      role: "provider"
     },
-    { title: "Pharmacies", icon: <FaPills size={23} />, link: "/pharmacies",role: "doctor" },
+    { title: "Pharmacies", icon: <FaPills size={23} />, link: "/pharmacies",role: "provider" },
     {
       title: "Laboratories",
       icon: <MdLocalPharmacy size={23} />,
       link: "/laboratories",
-      role: "doctor"
+      role: "provider"
     },
         {
       title: "Orders",

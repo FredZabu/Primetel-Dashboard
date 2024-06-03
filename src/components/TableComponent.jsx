@@ -73,7 +73,7 @@ const TableComponent = ({ tableHeaders, tableData, status, actions, funct }) => 
 
                   {actions && (
                     <Table.Cell>
-                      <div className="flex space-x-2">
+                      <td className="flex space-x-2">
                         <a
                           className="font-medium text-green hover:underline hover:scale-110 duration-150 cursor-pointer"
                           onClick={()=>setOpenView(!openView)}
@@ -102,7 +102,7 @@ const TableComponent = ({ tableHeaders, tableData, status, actions, funct }) => 
                           <FaTrash size={18}/>
                         </a>
                         
-                      </div>
+                      </td>
                     </Table.Cell>
                   )}
                                 

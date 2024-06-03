@@ -16,7 +16,7 @@ const Sidebar = ({ menuItems }) => {
   const role = useSelector((state) => {
       return state.auth.user.role;
   })
-  console.log(role);
+ 
   const [open, setOpen] = useState(true);
   return (
     <div

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import logger from 'redux-logger';
 
 import { addPatient, editPatient, removePatient, patientsReducer } from "./slices/PatientsSlice";
 import { AuthSliceReducer, getUser, setUser, logout} from "./slices/AuthSlice"

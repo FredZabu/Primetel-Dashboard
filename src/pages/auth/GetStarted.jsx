@@ -12,15 +12,10 @@ const GetStarted = () => {
   const [activeCard, setActiveCard] = useState("");
   
   const userTypes = [
-    // {
-    //   type: "Patient",
-    //   icon: patient,
-    //   value: "patient",
-    // },
     {
       type: "Provider",
       icon: provider,
-      value: "doctor",
+      value: "provider",
     },
     {
       type: "Pharmacy",
