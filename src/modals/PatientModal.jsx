@@ -15,12 +15,25 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import InputInfoComponent from "../components/InputInfoComponent";
 import { toast } from "react-hot-toast";
-
-import React from 'react'
+import { useAddPatientMutation } from "../store/index.js";
+import React, { useEffect } from 'react'
+import Loader from "../components/Loader.jsx"
 
 function PatientModal(props) {
+  const [addPatient, { data, isLoading, isSuccess, isError, error }] = useAddPatientMutation();
   const dispatch = useDispatch();
   const { setOpenModal } = props;
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Created Patient!")
+      setOpenModal(false);
+    }
+    if (isError) {
+      toast.error(error.data)
+    }
+    
+  }, [isSuccess, isError])
+
   const patientFormik = useFormik({
     initialValues: {
       name: "",
@@ -42,11 +55,7 @@ function PatientModal(props) {
         notes: Yup.string().required("Notes is required"),
     }),
     onSubmit: (values) => {
-      console.log("Below it is");
-      console.log(values);
-      dispatch(addPatient(values));
-      setOpenModal(false);
-      toast.success("Patient Added");
+      addPatient(values);
     },
   });
 
@@ -198,13 +207,14 @@ function PatientModal(props) {
               </div>
               <div className="w-full">
                 <Button
-                  className="bg-primary border border-primary mx-auto hover:bg-white hover:text-primary text-white"
+                  className="bg-primary border border-primary mx-auto hover:bg-primary/70 focus:bg-primary  text-white"
                   type="submit"
               color="red"
               
                 >
-                  Create Patient
-                </Button>
+                 {isLoading? <div className="flex justify-center items-center space-x-2"><Loader /> <div>creating</div></div> : "Create Patient"}    
+            </Button>
+            
               </div>
             </div>
           </form>

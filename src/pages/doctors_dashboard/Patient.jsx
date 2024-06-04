@@ -7,24 +7,32 @@ import TableComponent from "../../components/TableComponent";
 import {useGetPatientsQuery} from "../../store/index.js"
 import getAccessToken from "../../store/api/getAccessToken.js";
 export default function Patient() {
+    // const tableHeaders = [
+    //   "name",
+    //   "gender",
+    //   "email",
+    //   "phoneNumber",
+    //   "date",
+      
+    // ];
     const tableHeaders = [
-      "name",
+      "first_name",
       "gender",
       "email",
-      "phoneNumber",
-      "date",
+      "phone_number",
+      "created_at",
       
-    ];
+    ];  
     const token = getAccessToken()
-  const { data, error, isLoading,isError,isSuccess } = useGetPatientsQuery(token);
+    const { data, error, isLoading,isError,isSuccess } = useGetPatientsQuery(token);
 
-  const [dataTable, setDataTable] = useState([])
+    const [dataTable, setDataTable] = useState([])
 
   useEffect(() => {
     if (isSuccess) {
       console.log(data.data)
-      // setDataTable(data)
-      // console.log(dataTable);
+      setDataTable(data)
+      console.log(dataTable);
       toast.success("Success")
     }
     if (isError) {
@@ -62,7 +70,7 @@ export default function Patient() {
             {
               isLoading ? <div>Loading</div> :             <div className="mt-4">
               <TableComponent
-                tableData={[]}
+                tableData={isSuccess ? data.data : []}
                 tableHeaders={tableHeaders}
                 status={false}
                 actions={true}

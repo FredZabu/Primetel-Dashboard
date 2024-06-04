@@ -23,7 +23,7 @@ const store = configureStore({
         [loginApi.reducerPath]: loginApi.reducer,
     },
     middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware().concat(loginApi.middleware).concat(PatientApi.middleware).concat(AppointmentApi.middleware);
+        return getDefaultMiddleware().concat(loginApi.middleware).concat(PatientApi.middleware, logger).concat(AppointmentApi.middleware);
     }
 })
 

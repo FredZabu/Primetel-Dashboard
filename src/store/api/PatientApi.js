@@ -20,22 +20,20 @@ export const PatientApi = createApi({
                 
             }),
             addPatient: builder.mutation({
-                query: builder.mutation({
-                    query: (patient) => {
+                query: (patient) => {
                         return {
                             url: "/patients",
                             body: {
-                                "name": patient.name,
+                                "first_name": patient.name,
                                 "gender": patient.gender,
                                 "email": patient.email,
-                                "phoneNumber": patient.phoneNumber,
+                                "phone_number": patient.phoneNumber,
                                 "date": patient.date
                             },
                             method: "POST"
                         }
                     }
-                })
-            }),
+                }),
             // editPatient: builder.mutation({
             //     query: (userId) => {
             //         return {
