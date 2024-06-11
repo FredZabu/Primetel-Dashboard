@@ -8,6 +8,7 @@ export const PatientApi = createApi({
     endpoints: (builder) => {
         return {
             getPatients: builder.query({
+                providesTags: ["Patient"],
                 query: (token) => {
                     return {
                         url: "/patients",                        
@@ -20,6 +21,7 @@ export const PatientApi = createApi({
                 
             }),
             addPatient: builder.mutation({
+                invalidatesTags: ["Patient"],
                 query: (patient) => {
                         return {
                             url: "/patients",
@@ -43,6 +45,7 @@ export const PatientApi = createApi({
             //     }
             // }),
             deletePatient: builder.mutation({
+                invalidatesTags: ["Patient"],
                 query: (userId) => {
                     return {
                         url: "/patients"+userId,
