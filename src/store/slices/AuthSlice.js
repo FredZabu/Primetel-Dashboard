@@ -4,8 +4,8 @@ const AuthSlice = createSlice({
     name: "Auth",
     initialState: {
         user: {
-            role: null,
-            token: null
+            role: '',
+            token: ''
         }
     },
     reducers: {
@@ -13,13 +13,14 @@ const AuthSlice = createSlice({
             return state.user.role;
         },
         setUser(state, action) {
+            state.user.role = action.payload.role;
+            state.user.token = action.payload.token;            
             sessionStorage.setItem("user",
                 JSON.stringify({
                     role: action.payload.role,
                     token: action.payload.token
                 }))
-            state.user.role = action.payload.role;
-            state.user.token = action.payload.token;
+
         },
         logout(state) {
             sessionStorage.clear("user");

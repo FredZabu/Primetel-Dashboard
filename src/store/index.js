@@ -32,5 +32,5 @@ setupListeners(store.dispatch);
 export { addPatient, editPatient, removePatient, handleSearch, addAppointment, removeAppointment, editAppointment,getUser,setUser,logout, store };
  
 export { useLoginMutation, useRegisterMutation } from "./authApi/LoginApi"   
-export { useAddPatientMutation, useDeletePatientMutation, useGetPatientsQuery } from "./api/PatientApi";
+export { useAddPatientMutation, useDeletePatientMutation, useGetPatientsQuery,useEditPatientMutation } from "./api/PatientApi";
 export { useGetAppointments, useAddAppointment, useRemoveAppointment } from "./api/AppointmentApi"

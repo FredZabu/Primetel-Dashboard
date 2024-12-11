@@ -17,7 +17,11 @@ export default function Home() {
         window.history.pushState(null, document.title,  window.location.href);
     });
   }, []);
-  const totalPatients = useSelector((state) => { return state.patients.totalPatients });
+  const { totalPatients, user } = useSelector((state) => {
+    console.log("User State")
+    console.log(state.auth.user)
+    return { totalPatients: state.patients.totalPatients, user: state.auth.user }
+  });
   const cardStats = [
     {
       title: "Total Patients",

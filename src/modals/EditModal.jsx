@@ -9,6 +9,8 @@ function EditModal(props) {
     funct,
     data
   } = props;
+    // console.log("PATIENT " + data)
+    // console.log(data)
     if (funct === "Patient") {
         return <PatientEditModal openModal={openModal} setOpenModal={setOpenModal} data={data} funct={funct} />
     } else if (funct === "Appointment") {

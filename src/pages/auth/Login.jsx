@@ -15,28 +15,33 @@ import {useLoginMutation } from "../../store/index.js"
 import { useDispatch } from "react-redux";
 import { setUser} from "../../store/index.js";
 
-const Login = () => {
+
+  const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const nullUser = JSON.stringify({
                     role: null,
                     token: null
-                })
+  })
   const user = JSON.parse(sessionStorage.getItem("user") || nullUser)
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
-  };
+  }
 
   const [login, { data, isLoading, isSuccess, isError }] = useLoginMutation();
   useEffect(() => {
+   
     if (user.token) {
+      dispatch(setUser(user))
       navigate("/dashboard")
     }
     if (isSuccess) {
+      dispatch(setUser(data))
       navigate("/dashboard")
       toast.success('Login Successful!');
-      dispatch(setUser(data))
+      
       console.log(data);
     } 
     if (isError) {

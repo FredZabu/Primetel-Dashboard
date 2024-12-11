@@ -15,7 +15,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import InputInfoComponent from "../components/InputInfoComponent";
 import { toast } from "react-hot-toast";
-import { editPatient } from '../store/index.js';
+import { editPatient, useEditPatientMutation } from '../store/index.js';
 
 import React from 'react'
 
@@ -27,16 +27,16 @@ function PatientEditModal(props) {
     data
   } = props;
 
-  const dispatch = useDispatch();
+  const [editPatient, {isLoading, isSuccess, isError, error }] = useEditPatientMutation()
 
   const patientFormik = useFormik({
     initialValues: {
-      Name: data.Name,
-      Gender: data.Gender,      
-      Email: data.Email,
-      PhoneNumber: data.PhoneNumber,
-      Date: data.Date,
-      Notes: data.Notes,
+      Name: data.first_name,
+      Gender: data.gender,      
+      Email: "email@gmail.com",
+      PhoneNumber: data.phone_number,
+      Date: data.updated_at,
+      Notes: "sick",
     },
     //validate form
     validationSchema: Yup.object({
@@ -51,12 +51,16 @@ function PatientEditModal(props) {
     }),
     onSubmit: (values) => {
       console.log("Patient Value", values.name);
-      dispatch(editPatient({id: data.id, newData: values}));
-      setOpenModal(false);
-      toast.success("Patient Edited");
+      console.log(values)
+      editPatient({ id: data.id, newData: values });
+      if (isSuccess) {
+        setOpenModal(false);
+        toast.success("Patient Edited");
+      }
     },
   });
-
+  console.log("PASSED DATA")
+  console.log(data)
     return (
         <Modal
       className={""}
@@ -87,7 +91,7 @@ function PatientEditModal(props) {
                 </div>
                 <TextInput
                   name="Name"
-                  placeholder="Name"
+                  placeholder={data.Name}
                   onChange={patientFormik.handleChange}
                   onBlur={patientFormik.handleBlur}
                   value={patientFormik.values.Name}

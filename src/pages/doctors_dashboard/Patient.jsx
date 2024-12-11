@@ -30,6 +30,7 @@ export default function Patient() {
 
   useEffect(() => {
     if (isSuccess) {
+      console.log("Data Below")
       console.log(data.data)
       setDataTable(data)
       console.log(dataTable);

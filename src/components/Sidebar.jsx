@@ -16,7 +16,7 @@ const Sidebar = ({ menuItems }) => {
   const role = useSelector((state) => {
       return state.auth.user.role;
   })
- 
+console.log("The ROLE is "+role);
   const [open, setOpen] = useState(true);
   return (
     <div
@@ -38,6 +38,7 @@ const Sidebar = ({ menuItems }) => {
       <div className="  flex flex-col">
         <ul className="pt-4 px-2">
           {menuItems.map((menu, index) => {
+            
             return (
               <div key={index} className={` ${menu.role === role || menu.role === "default" ? '' : 'hidden'} `
           } >

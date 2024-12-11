@@ -82,10 +82,12 @@ const TableComponent = ({ tableHeaders, tableData, status, actions, funct }) => 
                         </a>
                         <a
                           className="font-medium text-orange hover:underline hover:scale-110 duration-150 cursor-pointer"
-                         onClick={() => {
-                            setOpenModal(true);
-                           console.log(data);
+                          onClick={() => {
                            setDataNeeded(data);
+                           setOpenModal(true);
+                           console.log("PATIENT ID BELOW")
+                           console.log(dataNeeded);
+                           
                           }}
                         >
                           <FaEdit size={18}/>
@@ -122,7 +124,7 @@ const TableComponent = ({ tableHeaders, tableData, status, actions, funct }) => 
       </Table>
 
       <PaginationButton className="my-5" />
-      {openModal ? <EditModal openModal={openModal} setOpenModal={setOpenModal} funct={funct} data={dataNeeded} /> : ''}
+      {openModal && dataNeeded ? <EditModal openModal={openModal} setOpenModal={setOpenModal} funct={funct} data={dataNeeded} /> : ''}
       { openView? <ViewModal openView = {openView} setOpenView={setOpenView} funct = {funct} data = {dataNeeded} /> : ''}
     </>
   );
