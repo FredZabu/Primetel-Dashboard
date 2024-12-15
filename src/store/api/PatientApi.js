@@ -15,7 +15,7 @@ export const PatientApi = createApi({
                         url: "/patients",
                         method: "GET",
                         headers: {
-                            authorization: `${Token}`,
+                            authorization: `${token}`,
                         },
                     }
                 },
